@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Recursion{
     /*   
     *@param n any non-negative value you want to take the sqrt of
@@ -45,9 +47,23 @@ public class Recursion{
         return fibHelp(n, sum+last, index+1, sum); //the "sum" before this function call is now the last element of the new function call
     }
 
-    /*As Per classwork*/
-    //public static ArrayList<Integer> makeAllSums(){
-        
-    //}
+
+    public static ArrayList<Integer> makeAllSums(int n){
+        ArrayList<Integer> L = new ArrayList<>();
+        return msHelp(n, L);
+    }
+    public static ArrayList<Integer> msHelp(int n, ArrayList<Integer> L){
+        if (n == 0){
+            L.add(0);
+            return L;
+        } else {
+            int size = L.size();
+            for (int i = 0; i < size; i++){
+                L.add(L.get(i)+n);
+            }
+            L.add(n);
+            return msHelp(n-1, L);
+        }
+    }
 
 }

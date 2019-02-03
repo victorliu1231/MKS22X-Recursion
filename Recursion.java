@@ -57,7 +57,8 @@ public class Recursion{
             L.add(0);
             return L;
         } else {
-            int size = L.size();
+            int size = L.size(); //outside variable so that the loop does NOT update L.size() while parsing
+            //adds "n" to the elements in L as existed before the loop runs
             for (int i = 0; i < size; i++){
                 L.add(L.get(i)+n);
             }

@@ -22,7 +22,7 @@ public class Recursion{
     }
 
     /*Recursively find the n'th fibbonaci number in linear time
-     *fib(0) = 1; fib(1) = 1; fib(5) = 5
+     *fib(0) = 0; fib(1) = 1; fib(5) = 5
      *precondition: n is non-negative
      */
     public static int fib(int n){
@@ -36,11 +36,11 @@ public class Recursion{
         if (n == index){ //terminates recursive loop
             return sum;
         }
-        if (index == 0){
-            return fibHelp(n, 0, index+1, 0);
-        }
         if (index == 1){
             return fibHelp(n, 1, index+1, 1);
+        }
+        if (index == 0){
+            return fibHelp(n, 1, index+1, 0);
         }
         return fibHelp(n, sum+last, index+1, sum); //the "sum" before this function call is now the last element of the new function call
     }

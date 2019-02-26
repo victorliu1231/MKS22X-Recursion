@@ -50,20 +50,15 @@ public class recursion{
 
     public static ArrayList<Integer> makeAllSums(int n){
         ArrayList<Integer> L = new ArrayList<>();
-        return msHelp(n, L);
+        msHelp(n, L, 0);
+        L.add(0);
+        return L;
     }
-    public static ArrayList<Integer> msHelp(int n, ArrayList<Integer> L){
-        if (n == 0){
-            L.add(0);
-            return L;
-        } else {
-            int size = L.size(); //outside variable so that the loop does NOT update L.size() while parsing
-            //adds "n" to the elements in L as existed before the loop runs
-            for (int i = 0; i < size; i++){
-                L.add(L.get(i)+n);
-            }
-            L.add(n);
-            return msHelp(n-1, L);
+    public static void msHelp(int n, ArrayList<Integer> L, int sum){
+        if (n > 0){
+            L.add(n+sum);
+            msHelp(n-1, L, sum);
+            msHelp(n-1, L, sum+n);
         }
     }
 
